@@ -4,8 +4,6 @@ var Transition = require("./Transition");
 var Automaton = require("./Automaton");
 var Input = require("./Input");
 
-
-
 var AutomatonBuilder = {
 
     /**
