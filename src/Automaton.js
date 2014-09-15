@@ -56,6 +56,10 @@ Automaton.prototype.length = function(){
 Automaton.prototype.run = function(input){
     var letters = input.split("");
 
+    if(letters.length === 0){
+        return false;
+    }
+
     var state = this.initial;
     var letter = null;
     while(letter = letters.shift()){
@@ -64,7 +68,7 @@ Automaton.prototype.run = function(input){
         }
     }
 
-    return true;
+    return state.accept;
 };
 
 

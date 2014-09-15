@@ -6,6 +6,7 @@ var State = require("../src/State");
 var Transition = require("../src/Transition");
 var Automaton = require("../src/Automaton");
 var AutomatonBuilder = require("../src/AutomatonBuilder");
+var Input = require("../src/Input");
 
 describe("Inheritance", function(){
 
@@ -112,16 +113,53 @@ describe("Automaton functionality", function(){
 
 });
 
+describe("Input functionality", function(){
+
+    it("without", function(){
+        var withoutD = Input.without("d");
+        var beforeD = withoutD[0];
+        var afterD = withoutD[1];
+        assert.deepEqual(beforeD, [ 'a', 'b', 'c' ]);
+        assert.deepEqual(afterD, [ 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+                'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' ]);
+
+        var withoutA = Input.without("a");
+        var beforeA = withoutA[0];
+        var afterA = withoutA[1];
+        assert.deepEqual(beforeA, []);
+        assert.deepEqual(afterA, [ 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+                'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' ]);
+
+        var withoutZ = Input.without("z");
+        var beforeZ = withoutZ[0];
+        var afterZ = withoutZ[1];
+        assert.deepEqual(beforeZ, [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+                'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y' ]);
+        assert.deepEqual(afterZ, []);
+        
+    });
+});
 
 describe("AutomatonBuilder", function(){
 
     it("single character automaton", function(){
-        var automaton = new AutomatonBuilder.singleChar("a");
+        var automaton = AutomatonBuilder.singleChar("a");
         assert.equal(automaton.length(), 2);
-        assert(automaton.run("a"));
-        assert.notEqual(automaton.run("b"));
-        assert.notEqual(automaton.run("aaaa"));
-        assert.notEqual(automaton.run(""));
+        assert(automaton.run("a"), "a");
+        assert(!automaton.run("b"), "b");
+        assert(!automaton.run("aaaa"), "aaaa");
+        assert(!automaton.run(""), "empty string");
     });
 
+    it("first and last character automaton", function(){
+        var automaton = new AutomatonBuilder.firstAndLastChar("a","b");
+        assert.equal(automaton.length(), 3);
+
+        assert(!automaton.run("a"), "a");
+        assert(!automaton.run("aaaaaaaaba"), "aaaaaaaaba");
+        assert(!automaton.run("zab"), "zab");
+
+        assert(automaton.run("ab"), "ab");
+        assert(automaton.run("aasdfasdfb"), "aasdfasdfb");
+    });
 });
