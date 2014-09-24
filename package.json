@@ -1,1 +1,26 @@
-{}
+{
+  "name": "automatonjs",
+  "version": "1.0.0",
+  "description": "A simple DFA implementation using Javascript. This project focused on Javascript best practices, nodejs and mocha -- it could have been about anything, it just happens to be about Automata.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/naddeoa/automatonjs.git"
+  },
+  "keywords": [
+    "automaton",
+    "automata"
+  ],
+  "author": "Anthony Naddeo <anthony.naddeo@gmail.com> (https://github.com/naddeoa)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/naddeoa/automatonjs/issues"
+  },
+  "homepage": "https://github.com/naddeoa/automatonjs"
+}
