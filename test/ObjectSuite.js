@@ -168,6 +168,53 @@ describe("AutomatonBuilder", function(){
 describe("Serialization", function(){
     it("Transition", function(){
         var s1 = new State;
-        var t1 = new Transition(null, null, "a");
+        var s2 = new State;
+
+        var t1 = new Transition(s1, s2, "a");
+
+        var expectedTransition = JSON.stringify({
+            id: t1.id,
+            min: "a",
+            max: "a",
+            toState: s2.id,
+            fromState: s1.id
+        });
+        
+        assert(t1.toJSON(), expectedTransition);
+
+    });
+
+    it("State", function(){
+        var s1 = new State;
+        s1.accept = false;
+
+        var expectedS1 = JSON.stringify({
+            id: s1.id,
+            start: s1.start,
+            accept: s1.accept
+        });
+
+        assert(s1.toJSON(), expectedS1);
+    });
+
+    it("Automaton", function(){
+        var automaton = AutomatonBuilder.singleChar("a");
+
+        var id1 = Object.keys(automaton._states)[0];
+        var id2 = Object.keys(automaton._states)[1];
+
+        var state1 = automaton._states[id1];
+        var state2 = automaton._states[id2];
+
+        var transitionId = Object.keys(state1._transitions)[0];
+        var transition = state1._transitions[transitionId];
+
+        var expected = JSON.stringify({
+            states: [ state1, state2 ],
+            transitions: [ transition ]
+        });
+        //console.log(JSON.parse(automaton.toJSON()));
+
+        assert(automaton.toJSON(), expected);
     });
 });
