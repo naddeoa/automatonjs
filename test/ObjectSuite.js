@@ -1,12 +1,12 @@
 /* globals describe, it */
 
 var assert = require("assert");
-var Identifiable = require("../src/Identifiable");
-var State = require("../src/State");
-var Transition = require("../src/Transition");
-var Automaton = require("../src/Automaton");
-var AutomatonBuilder = require("../src/AutomatonBuilder");
-var Input = require("../src/Input");
+var Identifiable = require("app/Identifiable");
+var State = require("app/State");
+var Transition = require("app/Transition");
+var Automaton = require("app/Automaton");
+var AutomatonBuilder = require("app/AutomatonBuilder");
+var Input = require("app/Input");
 
 describe("Inheritance", function(){
 
@@ -152,7 +152,7 @@ describe("AutomatonBuilder", function(){
     });
 
     it("first and last character automaton", function(){
-        var automaton = new AutomatonBuilder.firstAndLastChar("a","b");
+        var automaton = AutomatonBuilder.firstAndLastChar("a","b");
         assert.equal(automaton.length(), 3);
 
         assert(!automaton.run("a"), "a");
