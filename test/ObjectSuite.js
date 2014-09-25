@@ -70,11 +70,11 @@ describe("State functionality", function(){
 describe("Transition functionality", function(){
 
     it("accepting certain inputs", function(){
-        var t1 = new Transition(null, "a");
+        var t1 = new Transition(null, null, "a");
         assert(t1.accepts("a"));
         assert(!t1.accepts("b"));
 
-        var t2 = new Transition(null, "a", "y");
+        var t2 = new Transition(null, null, "a", "y");
         assert(t2.accepts("b"));
         assert(t2.accepts("w"));
         assert(!t2.accepts("z"));
@@ -161,5 +161,13 @@ describe("AutomatonBuilder", function(){
 
         assert(automaton.run("ab"), "ab");
         assert(automaton.run("aasdfasdfb"), "aasdfasdfb");
+    });
+});
+
+
+describe("Serialization", function(){
+    it("Transition", function(){
+        var s1 = new State;
+        var t1 = new Transition(null, null, "a");
     });
 });
