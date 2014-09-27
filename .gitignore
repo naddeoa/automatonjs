@@ -1,6 +1,8 @@
 node_modules/*
 bundle.js
 bundle.min.js
+automatonjs.js
+automatonjs.min.js
 
 # Application source should be committed
 !node_modules/app
