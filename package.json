@@ -1,13 +1,17 @@
 {
   "name": "automatonjs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple DFA implementation using Javascript. This project focused on Javascript best practices, nodejs and mocha -- it could have been about anything, it just happens to be about Automata.",
   "main": "index.js",
   "files": [
-    "./node_modules/app"
+    "index.js"
   ],
   "directories": {
     "test": "test"
+  },
+  "devDependencies": {
+    "browserify": "*",
+    "mocha": "^1.21.4"
   },
   "scripts": {
     "test": "mocha"
