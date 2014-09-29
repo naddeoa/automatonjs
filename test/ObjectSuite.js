@@ -180,7 +180,7 @@ describe("Serialization", function(){
             fromState: s1.id
         });
         
-        assert(t1.toJSON(), expectedTransition);
+        assert.deepEqual(JSON.stringify(t1), expectedTransition);
 
     });
 
@@ -194,7 +194,7 @@ describe("Serialization", function(){
             accept: s1.accept
         });
 
-        assert(s1.toJSON(), expectedS1);
+        assert.deepEqual(JSON.stringify(s1), expectedS1);
     });
 
     it("Automaton", function(){
@@ -213,8 +213,7 @@ describe("Serialization", function(){
             states: [ state1, state2 ],
             transitions: [ transition ]
         });
-        //console.log(JSON.parse(automaton.toJSON()));
 
-        assert(automaton.toJSON(), expected);
+        assert.deepEqual(JSON.stringify(automaton), expected);
     });
 });

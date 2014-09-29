@@ -1,6 +1,6 @@
 {
   "name": "automatonjs",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A simple DFA implementation using Javascript. This project focused on Javascript best practices, nodejs and mocha -- it could have been about anything, it just happens to be about Automata.",
   "main": "automatonjs.min.js",
   "files": [
